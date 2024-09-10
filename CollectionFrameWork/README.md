@@ -1,5 +1,6 @@
-# Collection Interfaces
+# Collection Framework
 
+## Collection Interfaces
 | Interface   | Description|
 |--------------- | --------------- |
 | Collection   | Enables to work with groups of objects; it is at the top of the collections hierarachy  |
@@ -58,7 +59,7 @@
 - A list may contain duplicate elements. List is a generic interface that has this declaration.
     - `interface List<E>`
 
-2) [The Set Interface](./ListInterface/README.md) 
+2) [The Set Interface](./SetInterface/README.md) 
 - The `Set` interface defines a set. It extends `Collection` and declares the behavior of a collection that does not allow duplicate elements. Therefore `add()` method returns `false` if an attempt is made to add duplicate elements to a set.
 - It does not define any additional methods of its own.
 - `Set` is a generic interface that has this declaration:
