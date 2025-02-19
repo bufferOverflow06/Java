@@ -2,6 +2,8 @@ package mappingRelationships;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Alien {
     @Id
@@ -10,7 +12,9 @@ public class Alien {
     private String tech;
 //    @OneToOne
 //        - laptop is separate entity
-    private Laptop laptop;
+//    @OneToMany(mappedBy = "alien")
+    @ManyToMany
+    private List<Laptop> laptops;
 
     public int getAid() {
         return aid;
@@ -28,6 +32,14 @@ public class Alien {
         this.aname = aname;
     }
 
+    public List<Laptop> getLaptops() {
+        return laptops;
+    }
+
+    public void setLaptops(List<Laptop> laptops) {
+        this.laptops = laptops;
+    }
+
     public String getTech() {
         return tech;
     }
@@ -36,12 +48,12 @@ public class Alien {
         this.tech = tech;
     }
 
-    public Laptop getLaptop() {
-        return laptop;
+    public List<Laptop> getLaptop() {
+        return laptops;
     }
 
-    public void setLaptop(Laptop laptop) {
-        this.laptop = laptop;
+    public void setLaptop(List<Laptop> laptop) {
+        this.laptops = laptop;
     }
 
     @Override
@@ -50,7 +62,7 @@ public class Alien {
                 "aid=" + aid +
                 ", aname='" + aname + '\'' +
                 ", tech='" + tech + '\'' +
-                ", laptop=" + laptop +
+                ", laptop=" + laptops +
                 '}';
     }
 }

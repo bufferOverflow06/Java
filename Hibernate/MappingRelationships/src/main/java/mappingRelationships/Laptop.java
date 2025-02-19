@@ -1,8 +1,8 @@
 package mappingRelationships;
 
-import jakarta.persistence.Embeddable;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 // - Adding columns from a class without creating a new class
@@ -14,6 +14,18 @@ public class Laptop {
     private String model;
     private int ram;
 
+    @ManyToMany(mappedBy = "laptops")
+    // (this will map any one column so that there won't be extra table)
+    private List<Alien> aliens;
+
+
+    public List<Alien> getAliens() {
+        return aliens;
+    }
+
+    public void setAliens(List<Alien> aliens) {
+        this.aliens = aliens;
+    }
 
     public String getBrand() {
         return brand;
