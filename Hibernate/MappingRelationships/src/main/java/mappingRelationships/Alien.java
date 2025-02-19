@@ -1,3 +1,7 @@
+// Todo
+// level one and level two cache working
+// level one cache by default we is present in hibernate
+// @OneToMany(fetch = FetchType.EAGER) by default it will be FetchType.Lazy
 package mappingRelationships;
 
 import jakarta.persistence.*;
