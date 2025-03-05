@@ -53,14 +53,15 @@
         - if we are trying to delete something we should tell the server which one
     - Should not include body
 
-Rarely Used Verbs
-    - PATCH - Similar to Put, but with partial updates
-        - server will recieve speicific properties to be updated
-    - HEAD - Same as GET, but without the body in the response
+## Rarely Used Verbs
+
+- PATCH -> Similar to Put, but with partial updates
+- server will recieve speicific properties to be updated
+    - HEAD -> Same as GET, but without the body in the response
         - this verb can be used for a pre-check
         - for ex. if we want to know a specific entity exists then we can send a HEAD request.
         - If we recieve 200 Status code then the entity exists, even though we don't get it back
-    - OPTIONS - Describes the available verbs for the URL
+    - OPTIONS -> Describes the available verbs for the URL
         - `curl -X OPTIONS http://example.org -i`
             - Resopnse for the above url
                 - HTTP/1.1 204 No Content
