@@ -11,10 +11,10 @@ public class SpringBasicsApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
-//		SpringApplication.run(SpringBasicsApplication.class, args);
+		SpringApplication.run(SpringBasicsApplication.class, args);
 
-		Alien obj = (Alien) context.getBean("alien");
-		obj.code();
+		Alien obj1 = (Alien) context.getBean("alien");
+		System.out.println(obj1.getAge());
 	}
 
 }

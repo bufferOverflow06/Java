@@ -2,6 +2,11 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-    <bean id="alien"  class="com.example.spring_basics.Alien"></bean>
+<!--    <bean id="alien"  class="com.example.spring_basics.Alien" scope="prototype"></bean>-->
+    <bean id="alien"  class="com.example.spring_basics.Alien">
+        <property name="age" value="22"></property>
+
+    </bean>
+    <bean id="lap"  class="com.example.spring_basics.Laptop"></bean>
 <!--    if we have one more class we can mention it here-->
 </beans>
