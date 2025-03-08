@@ -15,6 +15,7 @@ public class SpringBasicsApplication {
 
 		Alien obj1 = (Alien) context.getBean("alien");
 		System.out.println(obj1.getAge());
+		obj1.code();
 	}
 
 }

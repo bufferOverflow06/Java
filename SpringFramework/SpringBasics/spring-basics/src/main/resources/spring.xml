@@ -3,10 +3,25 @@
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 <!--    <bean id="alien"  class="com.example.spring_basics.Alien" scope="prototype"></bean>-->
-    <bean id="alien"  class="com.example.spring_basics.Alien">
-        <property name="age" value="22"></property>
+    <bean id="alien"  class="com.example.spring_basics.Alien" autowire="byName">
+<!--        <constructor-arg value="22"/>-->
+<!--        <constructor-arg ref="lap"/>-->
 
+<!--        <constructor-arg name="age" value="22"/>-->
+<!--        <constructor-arg name="comp" ref="lap"/>-->
+
+        <property name="age" value="22"/>
+<!--        <property name="laptop" ref="lap"/>-->
+<!--        for autowire concept-->
+<!--        <property name="comp" ref="desk"/>-->
+
+<!--        if I have both name and ref with same name spring is still able to identify it-->
+<!--        <property name="comp" ref="comp"/>-->
+<!--        if I do not specify this then I have to mention autowire="byName" in the bean tag-->
     </bean>
     <bean id="lap"  class="com.example.spring_basics.Laptop"></bean>
+<!--    autowire concept-->
+    <bean id="comp"  class="com.example.spring_basics.Laptop"></bean>
+<!--    <bean id="desk"  class="com.example.spring_basics.Desktop"></bean>-->
 <!--    if we have one more class we can mention it here-->
 </beans>
