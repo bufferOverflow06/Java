@@ -67,5 +67,37 @@ obj = context.getBean("idName"); // this creates the object
     - if we don't want to mention the property explicitly if we want to ask spring framework to search for the dependancy based on name and type we can use
     - `autowire="byName"`
         - tries to match the object by name
+    - if I have `autowire=byName` then if I explicitly provide
+        - `<property name="name" ref="reference"` then this will be preferred over `Autowire`
     - `autowire="byType"`
         - tries to match the object by type
+
+## Primary Bean
+    - if there is a confusion say the objects created for the insterfaces in bean and `autowire` is specified then `primary=true` specifed bean will be choosen
+    - if we are mentioning explicitly then it will prefer the specifed one
+
+## Lazy init Bean
+    - The Object will not be created by default only when we want to use it, it will be created.
+    - still singleton
+    - `lazy-init="true"`
+    - if a non-lazy(eager) bean is dependent on a lazy bean still it will create the object of a lazy bean.
+
+## Get bean by type
+    - we can specify the class of which you want the object in the `getBean()` method
+    - Don't have to do type caste for the required class
+    - `<T> T getBean(String name, Class<T> requiredType)`
+    - We can either specify name of the bean or the type of class the object we want
+        - if we are specifing the class then in the bean tag there is no need for `id` vale
+
+## Inner Bean
+    - To limit a bean only for a particular class
+```xml
+<!-- example -->
+<bean id="alien" class="com.example.Alien" autowire="byType">
+    <property name="age" value="21"/>
+    <property name="com">
+        <bean id="com1" class="com.example.Laptop" primary="true">
+        </bean>
+    </property>
+ </bean>
+```

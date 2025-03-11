@@ -15,7 +15,7 @@
 <!--        for autowire concept-->
 <!--        <property name="comp" ref="desk"/>-->
 
-<!--        if I have both name and ref with same name spring is still able to identify it-->
+<!--        if I have both name and ref with same name spring is still able to identify it by providing the tag-->
 <!--        <property name="comp" ref="comp"/>-->
 <!--        if I do not specify this then I have to mention autowire="byName" in the bean tag-->
     </bean>
