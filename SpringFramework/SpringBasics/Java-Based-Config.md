@@ -1,39 +1,55 @@
-## Java Based configs
+## Java-Based Configs
 
 - `ApplicationContext context = new AnnotationConfigApplicationContext(ConfigClass.class)`
-- the `ConfigClass` should have the annotation
+- The `ConfigClass` should have the annotation:
     - `@Configuration`
-- In java based configuration we have to manually create objects in the Config class
-    - `@Bean` annotation for spring to create the object
-    - even though we are creating the object using `new`, the actual creating, managing and injecting is done by spring
+- In Java-based configuration, we have to manually create objects in the Config class:
+    - `@Bean` annotation for Spring to create the object.
+    - Even though we are creating the object using `new`, the actual creation, managing, and injecting are done by Spring.
 
-## Bean name
-    - Bean name is actually the method name mentioned in the config class
-    - we can specify our name for the bean name in the annotation itself `@Bean(name="newName")`
-    - and the name can be used in the `getBean()` method
-        - `Object obj = context.getBean("newName", cofigClassname.class)`
-    - we can also use multiple names as `@Bean(name={"name1", "name2", "name3"})`
-        - we can use any of the one name in the getBean method
+## Bean Name
+- The bean name is actually the method name mentioned in the config class.
+- We can specify our own name for the bean in the annotation itself:
+  `@Bean(name="newName")`
+- The name can then be used in the `getBean()` method:
+    - `Object obj = context.getBean("newName", ConfigClassName.class)`
+- We can also use multiple names:
+  `@Bean(name={"name1", "name2", "name3"})`
+    - Any of these names can be used in the `getBean` method.
 
 ## Scope Annotation
-    - `@Scope`
-    - by default the value will `singleton`
-    - we can change the value by using `@Scope("prototype")`
+- `@Scope`
+- By default, the value will be `singleton`.
+- We can change it by using `@Scope("prototype")`.
 
 ## Autowire
-    - We can mention what is dependant on by passing the Object as parameter to the method while creating the bean in config class
-    - In before version used to use `Autowired` keyword
+- We can specify dependencies by passing the object as a parameter while creating the bean in the config class.
+- In previous versions, `@Autowired` was used explicitly.
 
 ## Primary and Qualifier
-    - We can use the `@Qualifier("methodName")` to mention the name of the object that we want to refer to.
-    - If we do not wish to mention this we can make the methodName primary using the `@Primary` annotation above the method that we want to create the object of.
+- We can use the `@Qualifier("methodName")` annotation to specify the object to refer to.
+- If we do not want to specify a qualifier, we can make a method primary using the `@Primary` annotation.
 
-## Component sterotype annotation
-    - `@Component` is a sterotype annotation which helps the spring framework to understand that The below class must be managed by `spring` to create objects for it.
-    - whichever class we want the spring to automatically create the objects we have to mention this annotation
-    - After mentioning this we don't have to create separate methods for with `@Bean` to create the objects spring will manage it automatically by one more annotation called
-        - `@ComponentScan("package name")` with the attributes
-        - the attributes includes the package name or the model folder which included all the models
+## Component Stereotype Annotation
+- `@Component` is a stereotype annotation that tells the Spring framework to manage object creation.
+- Any class that should be automatically managed by Spring must be annotated with `@Component`.
+- After adding `@Component`, we don’t need `@Bean` methods—Spring will handle object creation automatically.
+- We can also use `@ComponentScan("package name")` to specify package scanning.
 
+## Autowired Field, Constructor, and Setter
+- If Spring is unable to create objects for a specified field, we can use `@Autowired` with `@Qualifier` to explicitly specify which object to create.
+- We can also specify a name in `@Component("name")`, which can be referenced in `@Qualifier`.
 
+### Types of Dependency Injection:
+1. **Field Injection** → `@Autowired` above a field.
+2. **Constructor Injection** → `@Autowired` above a constructor.
+3. **Setter Injection** → `@Autowired` above a setter.
+    - If not using field injection, it is recommended to use `@Autowired` with setters.
 
+## Primary Annotation
+- We can mention any one of the class as `@Primary` then this class will be used by the spring to create an object if there is confusion
+- If we mention both `@Qualifier` as well as `@Primary` then the first preference will be given to `@Qualifier` one.
+
+## Scope and Values
+-  We can inject values by using `@Value` annotation
+-  Advantage of using this is that we can use a separate properties file to inject the values.

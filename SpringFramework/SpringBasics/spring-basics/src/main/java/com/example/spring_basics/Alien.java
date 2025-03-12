@@ -1,12 +1,20 @@
 package com.example.spring_basics;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.beans.ConstructorProperties;
 
 @Component
 public class Alien {
+
+    @Autowired
+//    @Qualifier("laptop") // or desktop
     private Computer comp;
+
+    @Value("23")
     private int age;
 
     public Alien() {
@@ -38,7 +46,7 @@ public class Alien {
     }
 
     public void code(){
-        System.out.println("Coding");
+        System.out.println("Coding inside Alien class");
         comp.compile();
     }
 
