@@ -13,15 +13,17 @@ public class SpringBasicsApplication {
 
 	public static void main(String[] args) {
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
-		Desktop dt = context.getBean("hello", Desktop.class);
-		dt.compile();
+		Alien obj1 = (Alien) context.getBean("alien");
+		System.out.println(obj1.getAge());
+		obj1.code();
+
+//		Desktop dt = context.getBean("hello", Desktop.class);
+//		dt.compile();
 
 //		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 //		SpringApplication.run(SpringBasicsApplication.class, args);
 //
-//		Alien obj1 = (Alien) context.getBean("alien");
-//		System.out.println(obj1.getAge());
-//		obj1.code();
+//
 	}
 
 }
