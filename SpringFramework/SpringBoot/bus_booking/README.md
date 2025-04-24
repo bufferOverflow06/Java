@@ -54,13 +54,6 @@
   - Routes are shared across buses
   - You define them once, and use in multiple schedules
 
-> ❗So no, `source` is **not constant** — it's a field (a string like `"Chennai"` or `"Delhi"`). You’ll add many route rows like:
-```
-1, Chennai, Bangalore, 350
-2, Delhi, Jaipur, 280
-3, Mumbai, Pune, 150
-```
-
 ---
 
 ### 5. **schedules**
