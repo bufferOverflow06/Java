@@ -22,7 +22,8 @@ public class SecurityConfig{
 
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
-        http.authorizeHttpRequests(auth ->
+        http.csrf(csrf -> csrf.disable())
+            .authorizeHttpRequests(auth ->
             auth.requestMatchers("/h2-console").permitAll() // using this we can permit certain patterns
             .anyRequest().authenticated()) // for all requests
             .httpBasic(Customizer.withDefaults()); // enabling basic authenticaion
