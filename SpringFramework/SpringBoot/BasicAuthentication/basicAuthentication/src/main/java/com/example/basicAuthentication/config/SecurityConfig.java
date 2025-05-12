@@ -24,7 +24,7 @@ public class SecurityConfig{
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http.csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth ->
-            auth.requestMatchers("/h2-console").permitAll() // using this we can permit certain patterns
+            auth.requestMatchers("/authenticate").permitAll() // using this we can permit certain patterns
             .anyRequest().authenticated()) // for all requests
             .httpBasic(Customizer.withDefaults()); // enabling basic authenticaion
         return http.build();
