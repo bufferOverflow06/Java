@@ -28,13 +28,6 @@ public class Users implements UserDetails {
     public void setId(Long id) {
         this.id = id;
     }
-    public String getName() {
-        return username;
-    }
-    public void setName(String username) {
-        this.username = username;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority(role));
@@ -46,7 +39,11 @@ public class Users implements UserDetails {
 
     @Override
     public String getUsername() {
-        return "";
+        return this.username;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
     }
 
     @Override

@@ -16,7 +16,7 @@ public class AdminUserInitializer {
         return args -> {
             if(userDetailsRepository.findByUsername("admin").isEmpty()){
                 Users user = new Users();
-                user.setName("admin");
+                user.setUsername("admin");
                 user.setPassword(passwordEncoder.encode("admin123"));
                 user.setRole("ADMIN");
 
