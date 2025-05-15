@@ -27,9 +27,8 @@ public class AuthenticationController{
 
     @PostMapping("/signup")
     public ResponseEntity<Users> register(@RequestBody RegisterUserDto registerUserDto){
-        System.out.println("email: " + registerUserDto.getEmail());
-        System.out.println("password: " + registerUserDto.getPassword());
-        System.out.println("fullName: " + registerUserDto.getFullName());
+        // System.out.println("email: " + registerUserDto.getEmail());
+        // System.out.println("fullName: " + registerUserDto.getFullName());
         Users registeredUser = authenticationService.signup(registerUserDto);
 
         return ResponseEntity.ok(registeredUser);
