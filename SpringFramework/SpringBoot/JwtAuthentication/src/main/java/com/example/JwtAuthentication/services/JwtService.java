@@ -1,3 +1,5 @@
+package com.example.JwtAuthentication.services;
+
 import java.security.Key;
 import java.util.Base64.Decoder;
 import java.util.Date;
