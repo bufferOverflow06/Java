@@ -1,4 +1,5 @@
-import org.apache.catalina.User;
+package com.example.JwtAuthentication.services;
+
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -26,7 +27,7 @@ public class AuthenticationService{
 
     public Users signup(RegisterUserDto input){
         Users user = new Users();
-        user.setFullName(input.getFullname());
+        user.setFullName(input.getFullName());
         user.setEmail(input.getEmail());
         user.setPassword(passwordEncoder.encode(input.getPassword()));
 
