@@ -119,4 +119,10 @@ public class Users implements UserDetails {
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
+
+    @Override
+    public String toString() {
+        return "Users [id=" + id + ", fullName=" + fullName + ", email=" + email + ", password=" + password
+        + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+    }
 }
