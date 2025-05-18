@@ -57,5 +57,33 @@ public class ProductManagementApplication implements CommandLineRunner {
 
         laptopRepo.saveAll(List.of(l1, l2, l3));
         // above works
+
+        //  Category and Product-> OneToMany - ManyToOne
+		// OneToMany - ManyToOne
+		Product p1 = new Product();
+		p1.setProductName("iPhone 16");
+
+		Product p2 = new Product();
+		p2.setProductName("Samsung Galaxy S24");
+
+		Product p3 = new Product();
+		p3.setProductName("CMF by Nothing");
+
+		List<Product> productList = new ArrayList<>();
+		productList.add(p1);
+		productList.add(p2);
+		productList.add(p3);
+
+		Category c1 = new Category();
+		c1.setCategoryName("Mobile phones");
+		c1.setProductList(productList);
+
+		p1.setCategory(c1);
+		p2.setCategory(c1);
+		p3.setCategory(c1);
+
+        productRepo.saveAll(List.of(p1, p2, p3)); // If I do cascade all in product then no need to save category
+		// categoryRepo.save(c1); // not required
+
 	}
 }

@@ -13,7 +13,7 @@ public class Category {
 
     private String categoryName;
 
-    @OneToMany(mappedBy = "category", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "category")
     private List<Product> productList;
 
     public Category() {

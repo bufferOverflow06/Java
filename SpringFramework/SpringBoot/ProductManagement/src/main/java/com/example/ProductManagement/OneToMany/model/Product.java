@@ -11,7 +11,7 @@ public class Product {
 
     private String productName;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL) // save the category also when I save Product
     @JoinColumn(name = "category_id", referencedColumnName = "categoryId")
     private Category category;
 
