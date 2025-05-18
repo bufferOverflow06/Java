@@ -11,7 +11,9 @@ public class Laptop {
 
     private String laptopName;
 
-    @OneToOne(mappedBy = "laptop")
+    @OneToOne(mappedBy = "laptop") // this is basically telling I want
+    // Employee to have the foreign key
+    // Do not create FK from my part
     private Employee employee;
 
     public Laptop() {

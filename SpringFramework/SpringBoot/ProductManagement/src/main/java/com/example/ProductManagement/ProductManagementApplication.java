@@ -35,8 +35,9 @@ public class ProductManagementApplication implements CommandLineRunner {
         employee.setName("jhondoe");
         employee.setLaptop(laptop);
 
-        empRepo.save(employee);
-
+        empRepo.save(employee); // saving the employee instance saves the
+        // laptop also as  we are using `cascade = CascadeType.ALL` in employee
+        // class we can also do it other way around
         Optional<Laptop> byId = laptopRepo.findById(1L);
         System.out.println(byId.get().getEmployee().getName());
     }

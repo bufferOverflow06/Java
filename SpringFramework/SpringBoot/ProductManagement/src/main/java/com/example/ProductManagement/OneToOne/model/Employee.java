@@ -11,8 +11,9 @@ public class Employee {
 
     private String name;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "laptop_id", referencedColumnName = "laptopId")
+    @OneToOne(cascade = CascadeType.ALL) // Saving the Employee will also save laptop
+    @JoinColumn(name = "laptop_id", referencedColumnName = "laptopId") // join column by referencing the primary key of Laptop Table
+    // That is Laptop.laptopId with name "laptop_id" becomes the FK of this table
     private Laptop laptop;
 
     public Employee() {
