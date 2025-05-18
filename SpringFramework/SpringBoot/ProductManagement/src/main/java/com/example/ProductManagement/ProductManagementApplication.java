@@ -1,8 +1,12 @@
 package com.example.ProductManagement;
 
 import com.example.ProductManagement.OneToMany.model.Category;
+import com.example.ProductManagement.OneToMany.model.Employee;
+import com.example.ProductManagement.OneToMany.model.Laptop;
 import com.example.ProductManagement.OneToMany.model.Product;
 import com.example.ProductManagement.OneToMany.repo.CategoryRepo;
+import com.example.ProductManagement.OneToMany.repo.EmployeeRepo;
+import com.example.ProductManagement.OneToMany.repo.LaptopRepo;
 import com.example.ProductManagement.OneToMany.repo.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -21,6 +25,12 @@ public class ProductManagementApplication implements CommandLineRunner {
 	@Autowired
 	CategoryRepo categoryRepo;
 
+    @Autowired
+    LaptopRepo laptopRepo;
+
+    @Autowired
+    EmployeeRepo employeeRepo;
+
 	public static void main(String[] args) {
 		SpringApplication.run(ProductManagementApplication.class, args);
 
@@ -29,38 +39,23 @@ public class ProductManagementApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
-		// OneToMany - ManyToOne
-		Product p1 = new Product();
-		p1.setProductName("iPhone 16");
 
-		Product p2 = new Product();
-		p2.setProductName("Samsung Galaxy S24");
+        // Employee and Laptop -> OneToMany - ManyToOne
+        Employee e1 = new Employee();
+        e1.setEmpName("jhondoe");
 
-		Product p3 = new Product();
-		p3.setProductName("CMF by Nothing");
+        Laptop l1 = new Laptop();
+        l1.setBrand("Asus");
+        Laptop l2 = new Laptop();
+        l2.setBrand("Dell");
+        Laptop l3 = new Laptop();
+        l3.setBrand("Apple");
 
-		List<Product> productList = new ArrayList<>();
-		productList.add(p1);
-		productList.add(p2);
-		productList.add(p3);
+        l1.setEmployee(e1);
+        l2.setEmployee(e1);
+        l3.setEmployee(e1);
 
-		Category c1 = new Category();
-		c1.setCategoryName("Mobile phones");
-		c1.setProductList(productList);
-
-		p1.setCategory(c1);
-		p2.setCategory(c1);
-		p3.setCategory(c1);
-
-
-
-		categoryRepo.save(c1);
-
-//		 If cascade = CascadeType.ALL is not given in Category then we
-//		have to manually do this as no product will be saved automatically
-//		productRepo.save(p1);
-//		productRepo.save(p2);
-//		productRepo.save(p3);
-
+        laptopRepo.saveAll(List.of(l1, l2, l3));
+        // above works
 	}
 }
